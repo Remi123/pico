@@ -1,5 +1,5 @@
-# Build Setup 
-build/*
+# Build Setup
+/build/*
 
 # Prerequisites
 *.d
