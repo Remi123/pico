@@ -32,7 +32,6 @@ bool GPIO26_blink(struct repeating_timer * t)
 {
 	static bool blinking = false;
 	gpio_put(22, blinking);
-	gpio_put(LED_PIN, blinking);
 	blinking = !blinking;
 	return true;
 }
@@ -56,9 +55,9 @@ int main() {
 	gpio_set_dir(22,GPIO_OUT);
 
 	multicore_launch_core1([](){
-			add_repeating_timer_ms(500,GPIO26_blink,NULL,timer_core1.get());
-			while(true)
-				tight_loop_contents();
+		add_repeating_timer_ms(500,alarm_blink,NULL,timer_core1.get());
+		while(true)
+			tight_loop_contents();
 	});
 
 
@@ -77,7 +76,7 @@ int main() {
 			return true;
 		},NULL,timer_core0.get());
 
-		blocking_cmd_parse();
+	blocking_cmd_parse();
 }
 
 int blocking_cmd_parse()
@@ -102,6 +101,10 @@ int blocking_cmd_parse()
 				{
 					std::cout << "Quitting" << std::endl;
 					return 0;
+				}
+				else if(cmd.compare(0,4,"echo") == 0 )
+				{
+					std::cout << cmd << std::endl;
 				}
 				cmd.clear();
 				break;
