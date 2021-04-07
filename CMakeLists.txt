@@ -33,6 +33,11 @@ target_include_directories(hello_world PRIVATE ${Boost_INCLUDE_DIRS})
 # CMSIS Dependancy for Cortex M0+
 target_include_directories(hello_world INTERFACE CMSIS_5/CMSIS/Core/Include/core_cm0plus.h)
 
+# --------------------------------------------
+# Type_expr
+add_subdirectory(type_expr)
+set(TYPE_EXPR_TEST OFF)
+target_link_libraries(hello_world PRIVATE type_expr)
 
 
 

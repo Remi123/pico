@@ -4,3 +4,6 @@
 [submodule "pico-sdk"]
 	path = pico-sdk
 	url = https://github.com/raspberrypi/pico-sdk.git
+[submodule "type_expr"]
+	path = type_expr
+	url = https://github.com/Remi123/type_expr.git

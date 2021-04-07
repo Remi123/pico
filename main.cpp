@@ -6,6 +6,7 @@
 #include <iostream>
 #include <memory>
 
+#include "pico/bootrom.h"
 #include "pico/stdlib.h"
 #include "pico/multicore.h"
 #include "pico/time.h"
@@ -14,7 +15,9 @@
 #include "hardware/irq.h"
 #include "hardware/watchdog.h"
 
-#include "pico/bootrom.h"
+#include <type_expr.hpp>
+#include "jsch/jsch.hpp"
+
 
 constexpr uint LED_PIN = PICO_DEFAULT_LED_PIN;
 
