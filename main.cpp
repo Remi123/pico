@@ -19,7 +19,7 @@
 #include "jsch/jsch.hpp"
 
 
-constexpr uint LED_PIN = PICO_DEFAULT_LED_PIN;
+static constexpr int LED_PIN = PICO_DEFAULT_LED_PIN;
 
 
 
@@ -51,6 +51,12 @@ std::unique_ptr<repeating_timer,decltype(timer_deleter)> timer_core1 (new repeat
 
 int main() {
 	stdio_init_all();
+	
+	int i = 0;
+	auto scheduler = make_jsch(
+			std::move([&i](const int& i,const float&){ })
+			,std::move([](const int i ){})
+			);
 
 	gpio_init(LED_PIN);
 	gpio_set_dir(LED_PIN, GPIO_OUT);
