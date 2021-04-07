@@ -1,4 +1,4 @@
-set(Boost_INCLUDE_DIR /opt/qube/include/boost_1_61_0)
+set(Boost_INCLUDE_DIR /usr/local/boost_1_75_0)
 find_package(Boost REQUIRED)
 
 
